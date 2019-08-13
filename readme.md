@@ -1,7 +1,11 @@
 
 # Inteve\Types
 
+[![Build Status](https://travis-ci.org/inteve/types.svg?branch=master)](https://travis-ci.org/inteve/types)
+
 Value objects and helpers for PHP.
+
+<a href="https://www.paypal.me/janpecha/1eur"><img src="https://buymecoffee.intm.org/img/button-paypal-white.png" alt="Buy me a coffee" height="35"></a>
 
 
 ## Installation
