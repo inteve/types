@@ -18,7 +18,7 @@
 		{
 			Assert::string($hash);
 			$hash = strtolower($hash);
-			Assert::true(strlen($hash) == 32 && ctype_xdigit($hash), 'Invalid hash.');
+			Assert::true(strlen($hash) === 32 && ctype_xdigit($hash), 'Invalid hash.');
 			$this->hash = $hash;
 		}
 
