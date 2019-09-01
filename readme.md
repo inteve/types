@@ -22,6 +22,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 ## Usage
 
 * [HexColor](#hexcolor)
+* [Html](#html)
 * [Md5](#md5)
 
 
@@ -37,6 +38,20 @@ $color->getCssValue(); // returns '#0088ff'
 // from CSS color
 $color = HexColor::fromCssColor('#0088ff');
 ```
+
+### Html
+
+```php
+use Inteve\Types\Html;
+
+$html = new Html('<p>Lorem &gt; ipsum</p>');
+$html->getHtml();
+(string) $html; // alias for getHtml()
+
+$html->getPlainText(); // returns text without HTML tags & entities ('Lorem > ipsum')
+```
+
+It implements `Nette\Utils\IHtmlString` so can be used directly in Latte template (`{$html}`) without `|noescape` modifier.
 
 
 ### Md5
