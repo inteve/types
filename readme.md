@@ -21,7 +21,22 @@ Inteve\Types requires PHP 5.6.0 or later.
 
 ## Usage
 
+* [HexColor](#hexcolor)
 * [Md5](#md5)
+
+
+### HexColor
+
+```php
+use Inteve\Types\HexColor;
+
+$color = new HexColor('0088FF');
+$color->getValue(); // returns '0088ff'
+$color->getCssValue(); // returns '#0088ff'
+
+// from CSS color
+$color = HexColor::fromCssColor('#0088ff');
+```
 
 
 ### Md5
