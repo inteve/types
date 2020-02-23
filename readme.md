@@ -24,6 +24,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 * [HexColor](#hexcolor)
 * [Html](#html)
 * [Md5](#md5)
+* [Url](#url)
 
 
 ### HexColor
@@ -68,6 +69,18 @@ $md5 = Md5::from('Lorem ipsum dolor.');
 // from file
 $md5 = Md5::fromFile('/path/to/file');
 ```
+
+
+### Url
+
+```php
+use Inteve\Types\Url;
+
+$url = new Url('https://example.com/page');
+$url->getUrl();
+(string) $url; // alias for getUrl()
+```
+
 
 ------------------------------
 
