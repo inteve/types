@@ -5,7 +5,7 @@
 	use CzProject\Assert\Assert;
 
 
-	class Md5
+	class Md5Hash
 	{
 		/** @var string */
 		private $hash;

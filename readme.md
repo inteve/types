@@ -23,7 +23,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 
 * [HexColor](#hexcolor)
 * [Html](#html)
-* [Md5](#md5)
+* [Md5Hash](#md5hash)
 * [Url](#url)
 
 
@@ -55,19 +55,19 @@ $html->getPlainText(); // returns text without HTML tags & entities ('Lorem > ip
 It implements `Nette\Utils\IHtmlString` so can be used directly in Latte template (`{$html}`) without `|noescape` modifier.
 
 
-### Md5
+### Md5Hash
 
 ```php
-use Inteve\Types\Md5;
+use Inteve\Types\Md5Hash;
 
-$md5 = new Md5($hash);
+$md5 = new Md5Hash($hash);
 $md5->getHash(); // returns $hash
 
 // from string
-$md5 = Md5::from('Lorem ipsum dolor.');
+$md5 = Md5Hash::from('Lorem ipsum dolor.');
 
 // from file
-$md5 = Md5::fromFile('/path/to/file');
+$md5 = Md5Hash::fromFile('/path/to/file');
 ```
 
 
