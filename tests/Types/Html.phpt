@@ -8,9 +8,9 @@ require __DIR__ . '/../bootstrap.php';
 
 
 test(function () {
-	$html = '<p>Lorem &gt; ipsum</p>';
-	$color = new Html($html);
-	Assert::same($html, $color->getHtml());
-	Assert::same($html, (string) $color);
-	Assert::same('Lorem > ipsum', $color->getPlainText());
+	$value = '<p>Lorem &gt; ipsum</p>';
+	$html = new Html($value);
+	Assert::same($value, $html->getHtml());
+	Assert::same($value, (string) $html);
+	Assert::same('Lorem > ipsum', $html->getPlainText());
 });
