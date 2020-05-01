@@ -27,11 +27,26 @@ Inteve\Types requires PHP 5.6.0 or later.
 
 ## Usage
 
+* [DatabaseDataType](#databasedatatype)
 * [HexColor](#hexcolor)
 * [Html](#html)
 * [Md5Hash](#md5hash)
 * [PhpType](#phptype)
 * [Url](#url)
+
+
+### DatabaseDataType
+
+```php
+use Inteve\Types\DatabaseDataType;
+
+$type = new DatabaseDataType('INT', [10], ['UNSIGNED']);
+$type->getType();
+$type->getParameters();
+$type->getOptions();
+$type->hasOption('UNSIGNED'); // returns TRUE
+$type->getOptionValue('UNSINGED'); // returns mixed|NULL
+```
 
 
 ### HexColor
