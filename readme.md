@@ -24,6 +24,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 * [HexColor](#hexcolor)
 * [Html](#html)
 * [Md5Hash](#md5hash)
+* [PhpType](#phptype)
 * [Url](#url)
 
 
@@ -68,6 +69,32 @@ $md5 = Md5Hash::from('Lorem ipsum dolor.');
 
 // from file
 $md5 = Md5Hash::fromFile('/path/to/file');
+```
+
+
+### PhpType
+
+```php
+use Inteve\Types\PhpType;
+
+$type = new PhpType('bool');
+$type->getType();
+(string) $type; // alias for getType()
+$type->isBasicType(); // returns TRUE
+
+$type = new PhpType(PhpType::class);
+$type->isBasicType(); // returns FALSE
+```
+
+You can use static factories:
+
+```php
+$type = PhpType::arrayType();
+$type = PhpType::boolType();
+$type = PhpType::floatType();
+$type = PhpType::intType();
+$type = PhpType::stringType();
+$type = PhpType::classType(PhpType::class);
 ```
 
 
