@@ -32,6 +32,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 * [Html](#html)
 * [Md5Hash](#md5hash)
 * [PhpType](#phptype)
+* [PhpParameterType](#phpparametertype)
 * [Url](#url)
 
 
@@ -116,6 +117,36 @@ $type = PhpType::floatType();
 $type = PhpType::intType();
 $type = PhpType::stringType();
 $type = PhpType::classType(PhpType::class);
+```
+
+
+### PhpParameterType
+
+```php
+use Inteve\Types\PhpParameterType;
+
+$type = new PhpParameterType('bool');
+$type->getType();
+(string) $type; // alias for getType()
+$type->isBasicType(); // returns TRUE
+
+$type = new PhpParameterType(PhpParameterType::class);
+$type->isBasicType(); // returns FALSE
+```
+
+You can use static factories:
+
+```php
+$type = PhpParameterType::arrayType();
+$type = PhpParameterType::boolType();
+$type = PhpParameterType::floatType();
+$type = PhpParameterType::intType();
+$type = PhpParameterType::stringType();
+$type = PhpParameterType::callableType();
+$type = PhpParameterType::iterableType();
+$type = PhpParameterType::selfType();
+$type = PhpParameterType::objectType();
+$type = PhpParameterType::classType(PhpParameterType::class);
 ```
 
 
