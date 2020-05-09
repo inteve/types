@@ -1,6 +1,7 @@
 <?php
 
 use CzProject\Assert\AssertException;
+use Inteve\Types\PhpType;
 use Inteve\Types\PhpParameterType;
 use Tester\Assert;
 
@@ -76,4 +77,9 @@ test(function () {
 	Assert::exception(function () {
 		PhpParameterType::classType('bool');
 	}, AssertException::class, 'Class type cannot be basic type.');
+});
+
+
+test(function () {
+	Assert::same(PhpParameterType::arrayType(), PhpParameterType::fromPhpType(PhpType::arrayType()));
 });

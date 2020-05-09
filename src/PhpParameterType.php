@@ -158,6 +158,15 @@
 		/**
 		 * @return static
 		 */
+		public static function fromPhpType(PhpType $type)
+		{
+			return self::getInstance($type->getType());
+		}
+
+
+		/**
+		 * @return static
+		 */
 		private static function getInstance($type)
 		{
 			if (!isset(self::$instances[$type])) {

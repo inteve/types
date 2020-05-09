@@ -8,6 +8,11 @@
 	}
 
 
+	class InvalidArgumentException extends Exception
+	{
+	}
+
+
 	class MissingException extends Exception
 	{
 	}

@@ -2,6 +2,7 @@
 
 use CzProject\Assert\AssertException;
 use Inteve\Types\PhpType;
+use Inteve\Types\PhpParameterType;
 use Tester\Assert;
 
 require __DIR__ . '/../bootstrap.php';
@@ -60,4 +61,25 @@ test(function () {
 	Assert::exception(function () {
 		PhpType::classType('bool');
 	}, AssertException::class, 'Class type cannot be basic type.');
+});
+
+
+test(function () {
+	Assert::same(PhpType::arrayType(), PhpType::fromParameterType(PhpParameterType::arrayType()));
+
+	Assert::exception(function () {
+		PhpType::fromParameterType(PhpParameterType::selfType());
+	}, Inteve\Types\InvalidArgumentException::class, "Parameter type 'self' cannot be converted to Inteve\\Types\\PhpType.");
+
+	Assert::exception(function () {
+		PhpType::fromParameterType(PhpParameterType::objectType());
+	}, Inteve\Types\InvalidArgumentException::class, "Parameter type 'object' cannot be converted to Inteve\\Types\\PhpType.");
+
+	Assert::exception(function () {
+		PhpType::fromParameterType(PhpParameterType::iterableType());
+	}, Inteve\Types\InvalidArgumentException::class, "Parameter type 'iterable' cannot be converted to Inteve\\Types\\PhpType.");
+
+	Assert::exception(function () {
+		PhpType::fromParameterType(PhpParameterType::callableType());
+	}, Inteve\Types\InvalidArgumentException::class, "Parameter type 'callable' cannot be converted to Inteve\\Types\\PhpType.");
 });

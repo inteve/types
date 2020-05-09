@@ -117,6 +117,8 @@ $type = PhpType::floatType();
 $type = PhpType::intType();
 $type = PhpType::stringType();
 $type = PhpType::classType(PhpType::class);
+
+$type = PhpType::fromParameterType(new PhpParameterType('string'));
 ```
 
 
@@ -147,6 +149,8 @@ $type = PhpParameterType::iterableType();
 $type = PhpParameterType::selfType();
 $type = PhpParameterType::objectType();
 $type = PhpParameterType::classType(PhpParameterType::class);
+
+$type = PhpParameterType::fromPhpType(new PhpType('string'));
 ```
 
 

@@ -118,6 +118,21 @@
 		/**
 		 * @return static
 		 */
+		public static function fromParameterType(PhpParameterType $parameterType)
+		{
+			$type = $parameterType->getType();
+
+			if ($type === 'self' || $type === 'object' || $type === 'callable' || $type === 'iterable') {
+				throw new \Inteve\Types\InvalidArgumentException("Parameter type '$type' cannot be converted to " . PhpType::class . '.');
+			}
+
+			return self::getInstance($type);
+		}
+
+
+		/**
+		 * @return static
+		 */
 		private static function getInstance($type)
 		{
 			if (!isset(self::$instances[$type])) {
