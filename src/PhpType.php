@@ -6,7 +6,7 @@
 	use Nette\Utils\Validators;
 
 
-	class PhpType
+	class PhpType implements IPhpParameterType
 	{
 		/** @var string */
 		private $type;

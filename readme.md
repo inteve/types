@@ -121,6 +121,8 @@ $type = PhpType::classType(PhpType::class);
 $type = PhpType::fromParameterType(new PhpParameterType('string'));
 ```
 
+It implements `Inteve\Types\IPhpParameterType`.
+
 
 ### PhpParameterType
 
@@ -152,6 +154,8 @@ $type = PhpParameterType::classType(PhpParameterType::class);
 
 $type = PhpParameterType::fromPhpType(new PhpType('string'));
 ```
+
+It implements `Inteve\Types\IPhpParameterType`.
 
 
 ### Url
