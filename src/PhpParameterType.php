@@ -11,6 +11,7 @@
 		/** @var string */
 		private $type;
 
+		/** @var string[] */
 		private static $basicTypes = [
 			'array',
 			'bool',
@@ -28,7 +29,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $type
 		 */
 		public function __construct($type)
 		{
@@ -64,7 +65,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function arrayType()
 		{
@@ -73,7 +74,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function boolType()
 		{
@@ -82,7 +83,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function intType()
 		{
@@ -91,7 +92,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function floatType()
 		{
@@ -100,7 +101,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function stringType()
 		{
@@ -109,7 +110,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function callableType()
 		{
@@ -118,7 +119,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function iterableType()
 		{
@@ -127,7 +128,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function selfType()
 		{
@@ -136,7 +137,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function objectType()
 		{
@@ -145,7 +146,8 @@
 
 
 		/**
-		 * @return static
+		 * @param  string $type
+		 * @return self
 		 */
 		public static function classType($type)
 		{
@@ -156,7 +158,7 @@
 
 
 		/**
-		 * @return static
+		 * @return self
 		 */
 		public static function fromPhpType(PhpType $type)
 		{
@@ -165,7 +167,8 @@
 
 
 		/**
-		 * @return static
+		 * @param  string $type
+		 * @return self
 		 */
 		private static function getInstance($type)
 		{

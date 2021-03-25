@@ -12,7 +12,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $value
 		 */
 		public function __construct($value)
 		{
@@ -42,13 +42,13 @@
 
 
 		/**
-		 * @param  string
-		 * @return static
+		 * @param  string $color
+		 * @return self
 		 */
 		public static function fromCssColor($color)
 		{
 			Assert::string($color);
 			Assert::true(strlen($color) === 7 && $color[0] === '#', 'Invalid CSS color.');
-			return new static(substr($color, 1));
+			return new self(substr($color, 1));
 		}
 	}

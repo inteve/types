@@ -12,7 +12,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $html
 		 */
 		public function __construct($html)
 		{

@@ -12,7 +12,7 @@
 
 
 		/**
-		 * @param  string
+		 * @param  string $hash
 		 */
 		public function __construct($hash)
 		{
@@ -33,23 +33,23 @@
 
 
 		/**
-		 * @param  string
-		 * @return static
+		 * @param  string $s
+		 * @return self
 		 */
 		public static function from($s)
 		{
 			Assert::string($s);
-			return new static(md5($s));
+			return new self(md5($s));
 		}
 
 
 		/**
-		 * @param  string
-		 * @return static
+		 * @param  string $path
+		 * @return self
 		 */
 		public static function fromFile($path)
 		{
 			Assert::string($path);
-			return new static(md5_file($path));
+			return new self((string) md5_file($path));
 		}
 	}

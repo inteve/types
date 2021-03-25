@@ -10,17 +10,17 @@
 		/** @var string */
 		private $type;
 
-		/** @var array */
+		/** @var mixed[] */
 		private $parameters;
 
-		/** @var array */
+		/** @var array<string|int, mixed> */
 		private $options = [];
 
 
 		/**
-		 * @param  string
-		 * @param  array|string
-		 * @param  array  [OPTION => VALUE, OPTION2]
+		 * @param  string $type
+		 * @param  mixed[] $parameters
+		 * @param  array<string|int, mixed> $options  [OPTION => VALUE, OPTION2]
 		 */
 		public function __construct($type, array $parameters = [], array $options = [])
 		{
@@ -52,7 +52,7 @@
 
 
 		/**
-		 * @return array
+		 * @return mixed[]
 		 */
 		public function getParameters()
 		{
@@ -70,7 +70,7 @@
 
 
 		/**
-		 * @return array
+		 * @return array<string|int, mixed>
 		 */
 		public function getOptions()
 		{
@@ -79,6 +79,7 @@
 
 
 		/**
+		 * @param string $option
 		 * @return bool
 		 */
 		public function hasOption($option)
@@ -88,6 +89,7 @@
 
 
 		/**
+		 * @param string $option
 		 * @return mixed|NULL
 		 */
 		public function getOptionValue($option)
