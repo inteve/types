@@ -14,3 +14,9 @@ test(function () {
 	Assert::same($value, (string) $html);
 	Assert::same('Lorem > ipsum', $html->getPlainText());
 });
+
+
+test(function () {
+	$html = Html::fromText("Hello\nGandalf!\n");
+	Assert::same("Hello<br>\nGandalf!<br>\n", $html->getHtml());
+});

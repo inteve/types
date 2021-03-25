@@ -43,4 +43,14 @@
 		{
 			return $this->html;
 		}
+
+
+		/**
+		 * @param  string $s
+		 * @return self
+		 */
+		public static function fromText($s)
+		{
+			return new self(nl2br(htmlspecialchars($s, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8'), FALSE));
+		}
 	}
