@@ -37,6 +37,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 * [PhpParameterType](#phpparametertype)
 * UniqueId
 * [Url](#url)
+* UrlSlug
 
 
 ### DatabaseDataType
