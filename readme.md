@@ -35,6 +35,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 * Password
 * [PhpType](#phptype)
 * [PhpParameterType](#phpparametertype)
+* UniqueId
 * [Url](#url)
 
 
