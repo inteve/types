@@ -16,3 +16,8 @@
 	class MissingException extends Exception
 	{
 	}
+
+
+	class StaticClassException extends Exception
+	{
+	}

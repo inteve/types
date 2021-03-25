@@ -106,23 +106,4 @@
 
 			return new self($s);
 		}
-
-
-		/**
-		 * @param  string $path
-		 * @return self
-		 */
-		public static function readUrlPath($path)
-		{
-			return new self($path);
-		}
-
-
-		/**
-		 * @return string
-		 */
-		public static function writeUrlPath(self $path)
-		{
-			return $path->toString();
-		}
 	}

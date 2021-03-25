@@ -40,23 +40,4 @@
 		{
 			return new self(Strings::webalize($s));
 		}
-
-
-		/**
-		 * @param  string $slug
-		 * @return self
-		 */
-		public static function readUrlSlug($slug)
-		{
-			return new self($slug);
-		}
-
-
-		/**
-		 * @return string
-		 */
-		public static function writeUrlSlug(self $slug)
-		{
-			return $slug->toString();
-		}
 	}

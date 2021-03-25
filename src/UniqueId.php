@@ -40,23 +40,4 @@
 		{
 			return new self(Random::generate(10));
 		}
-
-
-		/**
-		 * @param  string $id
-		 * @return self
-		 */
-		public static function readUniqueId($id)
-		{
-			return new self($id);
-		}
-
-
-		/**
-		 * @return string $id
-		 */
-		public static function writeUniqueId(self $id)
-		{
-			return $id->toString();
-		}
 	}
