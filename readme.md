@@ -1,7 +1,7 @@
 
 # Inteve\Types
 
-[![Build Status](https://travis-ci.org/inteve/types.svg?branch=master)](https://travis-ci.org/inteve/types)
+[![Tests Status](https://github.com/inteve/types/workflows/Tests/badge.svg)](https://github.com/inteve/types/actions)
 
 Value objects and helpers for PHP.
 
