@@ -28,6 +28,7 @@ Inteve\Types requires PHP 5.6.0 or later.
 
 * BinaryData
 * [DatabaseDataType](#databasedatatype)
+* Decimal
 * [HexColor](#hexcolor)
 * [Html](#html)
 * [Md5Hash](#md5hash)
