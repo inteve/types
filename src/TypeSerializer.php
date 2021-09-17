@@ -31,6 +31,25 @@
 
 
 		/**
+		 * @param  string $ipAddress
+		 * @return IpAddress
+		 */
+		public static function readIpAddress($ipAddress)
+		{
+			return new IpAddress($ipAddress);
+		}
+
+
+		/**
+		 * @return string
+		 */
+		public static function writeIpAddress(IpAddress $ipAddress)
+		{
+			return $ipAddress->toString();
+		}
+
+
+		/**
 		 * @param  string $hash
 		 * @return Md5Hash
 		 */
@@ -65,6 +84,25 @@
 		public static function writePassword(Password $password)
 		{
 			return $password->getHash();
+		}
+
+
+		/**
+		 * @param  string $url
+		 * @return Url
+		 */
+		public static function readUrl($url)
+		{
+			return new Url($url);
+		}
+
+
+		/**
+		 * @return string
+		 */
+		public static function writeUrl(Url $url)
+		{
+			return $url->getUrl();
 		}
 
 
