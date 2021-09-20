@@ -8,6 +8,9 @@ require __DIR__ . '/../bootstrap.php';
 
 
 test(function () {
+	$emailAddress = TypeSerializer::readEmailAddress('gandalf@example.com');
+	Assert::same('gandalf@example.com', TypeSerializer::writeEmailAddress($emailAddress));
+
 	$html = TypeSerializer::readHtml('<br>');
 	Assert::same('<br>', TypeSerializer::writeHtml($html));
 

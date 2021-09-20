@@ -12,6 +12,25 @@
 
 
 		/**
+		 * @param  string $emailAddress
+		 * @return EmailAddress
+		 */
+		public static function readEmailAddress($emailAddress)
+		{
+			return new EmailAddress($emailAddress);
+		}
+
+
+		/**
+		 * @return string
+		 */
+		public static function writeEmailAddress(EmailAddress $emailAddress)
+		{
+			return $emailAddress->toString();
+		}
+
+
+		/**
 		 * @param  string $html
 		 * @return Html
 		 */
