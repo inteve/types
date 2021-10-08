@@ -8,8 +8,14 @@ require __DIR__ . '/../bootstrap.php';
 
 
 test(function () {
+	$decimal = TypeSerializer::readDecimal('-0.123');
+	Assert::same('-0.123', TypeSerializer::writeDecimal($decimal));
+
 	$emailAddress = TypeSerializer::readEmailAddress('gandalf@example.com');
 	Assert::same('gandalf@example.com', TypeSerializer::writeEmailAddress($emailAddress));
+
+	$hexColor = TypeSerializer::readHexColor('0088FF');
+	Assert::same('0088ff', TypeSerializer::writeHexColor($hexColor));
 
 	$html = TypeSerializer::readHtml('<br>');
 	Assert::same('<br>', TypeSerializer::writeHtml($html));

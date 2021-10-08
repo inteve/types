@@ -12,6 +12,25 @@
 
 
 		/**
+		 * @param  string $decimal
+		 * @return Decimal
+		 */
+		public static function readDecimal($decimal)
+		{
+			return new Decimal($decimal);
+		}
+
+
+		/**
+		 * @return string
+		 */
+		public static function writeDecimal(Decimal $decimal)
+		{
+			return $decimal->toString();
+		}
+
+
+		/**
 		 * @param  string $emailAddress
 		 * @return EmailAddress
 		 */
@@ -27,6 +46,25 @@
 		public static function writeEmailAddress(EmailAddress $emailAddress)
 		{
 			return $emailAddress->toString();
+		}
+
+
+		/**
+		 * @param  string $hexColor
+		 * @return HexColor
+		 */
+		public static function readHexColor($hexColor)
+		{
+			return new HexColor($hexColor);
+		}
+
+
+		/**
+		 * @return string
+		 */
+		public static function writeHexColor(HexColor $hexColor)
+		{
+			return $hexColor->getValue();
 		}
 
 
