@@ -12,12 +12,12 @@
 
 
 		/**
-		 * @param  string $decimal
+		 * @param  string|float|int $decimal
 		 * @return Decimal
 		 */
 		public static function readDecimal($decimal)
 		{
-			return new Decimal($decimal);
+			return Decimal::from($decimal);
 		}
 
 
