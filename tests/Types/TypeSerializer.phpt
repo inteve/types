@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Inteve\Types\Password;
 use Inteve\Types\TypeSerializer;
 use Tester\Assert;

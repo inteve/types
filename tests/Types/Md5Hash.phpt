@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use CzProject\Assert\AssertException;
 use Inteve\Types\Md5Hash;
 use Tester\Assert;
@@ -32,13 +34,6 @@ test(function () {
 test(function () {
 	$md5 = Md5Hash::fromFile(__DIR__ . '/fixtures/lorem-ipsum.txt');
 	Assert::same(md5("Lorem ipsum\n"), $md5->getHash());
-});
-
-
-test(function () {
-	Assert::exception(function () {
-		$md5 = new Md5Hash(10);
-	}, AssertException::class, 'Invalid value type - expected string, integer given.');
 });
 
 

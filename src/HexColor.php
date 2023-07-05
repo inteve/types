@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use CzProject\Assert\Assert;
@@ -11,43 +13,28 @@
 		private $value;
 
 
-		/**
-		 * @param  string $value
-		 */
-		public function __construct($value)
+		public function __construct(string $value)
 		{
-			Assert::string($value);
 			$value = strtolower($value);
 			Assert::true(strlen($value) === 6 && ctype_xdigit($value), 'Invalid color value.');
 			$this->value = $value;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getValue()
+		public function getValue(): string
 		{
 			return $this->value;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getCssValue()
+		public function getCssValue(): string
 		{
 			return '#' . $this->value;
 		}
 
 
-		/**
-		 * @param  string $color
-		 * @return self
-		 */
-		public static function fromCssColor($color)
+		public static function fromCssColor(string $color): self
 		{
-			Assert::string($color);
 			Assert::true(strlen($color) === 7 && $color[0] === '#', 'Invalid CSS color.');
 			return new self(substr($color, 1));
 		}

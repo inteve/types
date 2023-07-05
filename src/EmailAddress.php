@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use CzProject\Assert\Assert;
@@ -12,27 +14,20 @@
 		private $emailAddress;
 
 
-		/**
-		 * @param  string $emailAddress
-		 */
-		public function __construct($emailAddress)
+		public function __construct(string $emailAddress)
 		{
-			Assert::string($emailAddress);
 			Assert::true(Validators::isEmail($emailAddress), 'Invalid email address.');
 			$this->emailAddress = $emailAddress;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function toString()
+		public function toString(): string
 		{
 			return $this->emailAddress;
 		}
 
 
-		public function __toString()
+		public function __toString(): string
 		{
 			return $this->emailAddress;
 		}

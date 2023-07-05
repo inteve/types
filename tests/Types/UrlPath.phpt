@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use CzProject\Assert\AssertException;
 use Inteve\Types\UrlPath;
 use Tester\Assert;

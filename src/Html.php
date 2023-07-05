@@ -1,8 +1,8 @@
 <?php
 
-	namespace Inteve\Types;
+	declare(strict_types=1);
 
-	use CzProject\Assert\Assert;
+	namespace Inteve\Types;
 
 
 	class Html implements \Nette\Utils\IHtmlString
@@ -11,45 +11,31 @@
 		private $html;
 
 
-		/**
-		 * @param  string $html
-		 */
-		public function __construct($html)
+		public function __construct(string $html)
 		{
-			Assert::string($html);
 			$this->html = $html;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getHtml()
+		public function getHtml(): string
 		{
 			return $this->html;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getPlainText()
+		public function getPlainText(): string
 		{
 			return html_entity_decode(strip_tags($this->html), ENT_QUOTES, 'UTF-8');
 		}
 
 
-		public function __toString()
+		public function __toString(): string
 		{
 			return $this->html;
 		}
 
 
-		/**
-		 * @param  string $s
-		 * @return self
-		 */
-		public static function fromText($s)
+		public static function fromText(string $s): self
 		{
 			return new self(nl2br(htmlspecialchars($s, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8'), FALSE));
 		}

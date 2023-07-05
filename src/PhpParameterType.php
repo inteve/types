@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use CzProject\Assert\Assert;
@@ -28,10 +30,7 @@
 		private static $instances = [];
 
 
-		/**
-		 * @param  string $type
-		 */
-		public function __construct($type)
+		public function __construct(string $type)
 		{
 			Assert::string($type);
 			$type = ltrim($type, '\\');
@@ -40,116 +39,79 @@
 		}
 
 
-		/**
-		 * @return bool
-		 */
-		public function isBasicType()
+		public function isBasicType(): bool
 		{
 			return in_array($this->type, self::$basicTypes, TRUE);
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getType()
+		public function getType(): string
 		{
 			return $this->type;
 		}
 
 
-		public function __toString()
+		public function __toString(): string
 		{
 			return $this->type;
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function arrayType()
+		public static function arrayType(): self
 		{
 			return self::getInstance('array');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function boolType()
+		public static function boolType(): self
 		{
 			return self::getInstance('bool');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function intType()
+		public static function intType(): self
 		{
 			return self::getInstance('int');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function floatType()
+		public static function floatType(): self
 		{
 			return self::getInstance('float');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function stringType()
+		public static function stringType(): self
 		{
 			return self::getInstance('string');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function callableType()
+		public static function callableType(): self
 		{
 			return self::getInstance('callable');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function iterableType()
+		public static function iterableType(): self
 		{
 			return self::getInstance('iterable');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function selfType()
+		public static function selfType(): self
 		{
 			return self::getInstance('self');
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function objectType()
+		public static function objectType(): self
 		{
 			return self::getInstance('object');
 		}
 
 
-		/**
-		 * @param  string $type
-		 * @return self
-		 */
-		public static function classType($type)
+		public static function classType(string $type): self
 		{
 			$type = self::getInstance($type);
 			Assert::true(!$type->isBasicType(), 'Class type cannot be basic type.');
@@ -157,20 +119,13 @@
 		}
 
 
-		/**
-		 * @return self
-		 */
-		public static function fromPhpType(PhpType $type)
+		public static function fromPhpType(PhpType $type): self
 		{
 			return self::getInstance($type->getType());
 		}
 
 
-		/**
-		 * @param  string $type
-		 * @return self
-		 */
-		private static function getInstance($type)
+		private static function getInstance(string $type): self
 		{
 			if (!isset(self::$instances[$type])) {
 				self::$instances[$type] = new self($type);

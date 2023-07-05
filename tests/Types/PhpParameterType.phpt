@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use CzProject\Assert\AssertException;
 use Inteve\Types\PhpType;
 use Inteve\Types\PhpParameterType;
@@ -69,10 +71,6 @@ test(function () {
 	Assert::exception(function () {
 		new PhpParameterType('');
 	}, AssertException::class, 'Type cannot be empty.');
-
-	Assert::exception(function () {
-		new PhpParameterType(40);
-	}, AssertException::class, 'Invalid value type - expected string, integer given.');
 
 	Assert::exception(function () {
 		PhpParameterType::classType('bool');

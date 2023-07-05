@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use CzProject\Assert\Assert;
@@ -11,45 +13,28 @@
 		private $hash;
 
 
-		/**
-		 * @param  string $hash
-		 */
-		public function __construct($hash)
+		public function __construct(string $hash)
 		{
-			Assert::string($hash);
 			$hash = strtolower($hash);
 			Assert::true(strlen($hash) === 32 && ctype_xdigit($hash), 'Invalid hash.');
 			$this->hash = $hash;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getHash()
+		public function getHash(): string
 		{
 			return $this->hash;
 		}
 
 
-		/**
-		 * @param  string $s
-		 * @return self
-		 */
-		public static function from($s)
+		public static function from(string $s): self
 		{
-			Assert::string($s);
 			return new self(md5($s));
 		}
 
 
-		/**
-		 * @param  string $path
-		 * @return self
-		 */
-		public static function fromFile($path)
+		public static function fromFile(string $path): self
 		{
-			Assert::string($path);
 			return new self((string) md5_file($path));
 		}
 	}

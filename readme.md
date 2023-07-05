@@ -18,7 +18,7 @@ Value objects and helpers for PHP.
 composer require inteve/types
 ```
 
-Inteve\Types requires PHP 5.6.0 or later.
+Inteve\Types requires PHP 7.2.0 or later.
 
 
 ## Usage

@@ -1,21 +1,17 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 
 	interface IPhpParameterType
 	{
-		/**
-		 * @return bool
-		 */
-		function isBasicType();
+		function isBasicType(): bool;
 
 
-		/**
-		 * @return string
-		 */
-		function getType();
+		function getType(): string;
 
 
-		function __toString();
+		function __toString(): string;
 	}

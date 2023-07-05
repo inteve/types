@@ -1,9 +1,10 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use CzProject\Assert\Assert;
-	use Nette\Security\Passwords;
 
 
 	class Password
@@ -12,52 +13,54 @@
 		private $hash;
 
 
-		/**
-		 * @param  string $hash
-		 */
-		public function __construct($hash)
+		public function __construct(string $hash)
 		{
-			Assert::string($hash);
 			Assert::true(strlen($hash) >= 60, 'Invalid hash.');
 			$this->hash = $hash;
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getHash()
+		public function getHash(): string
 		{
 			return $this->hash;
 		}
 
 
-		/**
-		 * @param  string $password
-		 * @return bool
-		 */
-		public function verify($password)
+		public function verify(string $password): bool
 		{
-			return Passwords::verify($password, $this->hash);
+			return password_verify($password, $this->hash);
 		}
 
 
 		/**
-		 * @return bool
+		 * @param  string|int $algo
+		 * @param  array<string, mixed> $options
 		 */
-		public function needsRehash()
+		public function needsRehash($algo = PASSWORD_BCRYPT, array $options = []): bool
 		{
-			return Passwords::needsRehash($this->hash);
+			return password_needs_rehash($this->hash, $algo, $options);
 		}
 
 
 		/**
-		 * @param  string $password
-		 * @return self
+		 * @param  string|int $algo
+		 * @param  array<string, mixed> $options
 		 */
-		public static function hash($password)
+		public static function hash(string $password, $algo = PASSWORD_BCRYPT, array $options = []): self
 		{
 			Assert::string($password);
-			return new self(Passwords::hash($password));
+
+			if ($password === '') {
+				throw new InvalidArgumentException('Password can not be empty.');
+			}
+
+			$hash = @password_hash($password, $algo, $options); // @ is escalated to exception
+
+			if (!$hash) {
+				$lastError = error_get_last();
+				throw new InvalidStateException('Computed hash is invalid. ' . ($lastError !== NULL ? $lastError['message'] : ''));
+			}
+
+			return new self($hash);
 		}
 	}

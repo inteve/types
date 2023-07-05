@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use CzProject\Assert\Assert;
@@ -18,13 +20,11 @@
 
 
 		/**
-		 * @param  string $type
 		 * @param  mixed[] $parameters
 		 * @param  array<string|int, mixed> $options  [OPTION => VALUE, OPTION2]
 		 */
-		public function __construct($type, array $parameters = [], array $options = [])
+		public function __construct(string $type, array $parameters = [], array $options = [])
 		{
-			Assert::string($type);
 			$type = trim($type);
 			Assert::true($type !== '', 'Type cannot be empty.');
 
@@ -42,10 +42,7 @@
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getType()
+		public function getType(): string
 		{
 			return $this->type;
 		}
@@ -54,16 +51,13 @@
 		/**
 		 * @return mixed[]
 		 */
-		public function getParameters()
+		public function getParameters(): array
 		{
 			return $this->parameters;
 		}
 
 
-		/**
-		 * @return bool
-		 */
-		public function hasParameters()
+		public function hasParameters(): bool
 		{
 			return !empty($this->parameters);
 		}
@@ -72,27 +66,22 @@
 		/**
 		 * @return array<string|int, mixed>
 		 */
-		public function getOptions()
+		public function getOptions(): array
 		{
 			return $this->options;
 		}
 
 
-		/**
-		 * @param string $option
-		 * @return bool
-		 */
-		public function hasOption($option)
+		public function hasOption(string $option): bool
 		{
 			return array_key_exists($option, $this->options);
 		}
 
 
 		/**
-		 * @param string $option
 		 * @return mixed|NULL
 		 */
-		public function getOptionValue($option)
+		public function getOptionValue(string $option)
 		{
 			if (!$this->hasOption($option)) {
 				throw new \Inteve\Types\MissingException("Type hasn't option '$option'.");

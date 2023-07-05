@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 	use Nette\Utils\Strings;
@@ -18,15 +20,8 @@
 		private $zero;
 
 
-		/**
-		 * @param string $value
-		 */
-		public function __construct($value)
+		public function __construct(string $value)
 		{
-			if (!is_string($value)) {
-				throw new InvalidArgumentException('Value must be string, ' . gettype($value) . ' given.');
-			}
-
 			if (!Validators::isNumeric($value)) {
 				throw new InvalidArgumentException('Value must be numeric.');
 			}
@@ -54,20 +49,13 @@
 		}
 
 
-		/**
-		 * @return bool
-		 */
-		public function isZero()
+		public function isZero(): bool
 		{
 			return $this->zero;
 		}
 
 
-		/**
-		 * @param  int|NULL $decimals
-		 * @return self
-		 */
-		public function plus(Decimal $b, $decimals = NULL)
+		public function plus(Decimal $b, int $decimals = NULL): self
 		{
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
@@ -77,11 +65,7 @@
 		}
 
 
-		/**
-		 * @param  int|NULL $decimals
-		 * @return self
-		 */
-		public function minus(Decimal $b, $decimals = NULL)
+		public function minus(Decimal $b, int $decimals = NULL): self
 		{
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
@@ -91,11 +75,7 @@
 		}
 
 
-		/**
-		 * @param  int|NULL $decimals
-		 * @return self
-		 */
-		public function multipleBy(Decimal $b, $decimals = NULL)
+		public function multipleBy(Decimal $b, int $decimals = NULL): self
 		{
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
@@ -105,11 +85,7 @@
 		}
 
 
-		/**
-		 * @param  int|NULL $decimals
-		 * @return self
-		 */
-		public function divideBy(Decimal $b, $decimals = NULL)
+		public function divideBy(Decimal $b, int $decimals = NULL): self
 		{
 			if ($b->isZero()) {
 				throw new InvalidArgumentException('Division by zero.');
@@ -123,10 +99,7 @@
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function toString()
+		public function toString(): string
 		{
 			return $this->value;
 		}
@@ -134,10 +107,8 @@
 
 		/**
 		 * @param  string|int|float $value
-		 * @param  int|NULL $decimals
-		 * @return self
 		 */
-		public static function from($value, $decimals = NULL)
+		public static function from($value, int $decimals = NULL): self
 		{
 			if ($decimals !== NULL) {
 				if (is_string($value)) {
@@ -151,13 +122,7 @@
 		}
 
 
-		/**
-		 * @param  string $newValue
-		 * @param  int $decimals
-		 * @param  bool $hasDecimals
-		 * @return string
-		 */
-		private static function roundResult($newValue, $decimals, $hasDecimals)
+		private static function roundResult(string $newValue, int $decimals, bool $hasDecimals): string
 		{
 			$pos = strpos($newValue, '.');
 			$newDecimals = $pos !== FALSE ? (strlen($newValue) - ($pos + 1)) : 0;

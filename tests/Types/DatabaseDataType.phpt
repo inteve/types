@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use CzProject\Assert\AssertException;
 use Inteve\Types\DatabaseDataType;
 use Tester\Assert;
@@ -47,8 +49,4 @@ test(function () {
 	Assert::exception(function () {
 		new DatabaseDataType('');
 	}, AssertException::class, 'Type cannot be empty.');
-
-	Assert::exception(function () {
-		new DatabaseDataType(40);
-	}, AssertException::class, 'Invalid value type - expected string, integer given.');
 });

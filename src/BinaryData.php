@@ -1,5 +1,7 @@
 <?php
 
+	declare(strict_types=1);
+
 	namespace Inteve\Types;
 
 
@@ -9,15 +11,8 @@
 		private $data;
 
 
-		/**
-		 * @param string $data
-		 */
-		public function __construct($data)
+		public function __construct(string $data)
 		{
-			if (!is_string($data)) {
-				throw new InvalidArgumentException('Data must be string.');
-			}
-
 			if ($data === '') {
 				throw new InvalidArgumentException('Data cannot be empty.');
 			}
@@ -26,20 +21,13 @@
 		}
 
 
-		/**
-		 * @return string
-		 */
-		public function getData()
+		public function getData(): string
 		{
 			return $this->data;
 		}
 
 
-		/**
-		 * @param  string $data
-		 * @return self
-		 */
-		public static function fromBase64($data)
+		public static function fromBase64(string $data): self
 		{
 			$binary = base64_decode($data, TRUE);
 

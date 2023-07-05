@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use CzProject\Assert\AssertException;
 use Inteve\Types\IpAddress;
 use Tester\Assert;
@@ -24,7 +26,6 @@ test(function () {
 
 test(function () { // host vs IP address
 	Assert::false(IpAddress::isValid(''));
-	Assert::false(IpAddress::isValid(FALSE));
 	Assert::false(IpAddress::isValid('hello'));
 	Assert::false(IpAddress::isValid('inteve.org'));
 	Assert::false(IpAddress::isValid('inteve.org0'));
@@ -57,7 +58,6 @@ test(function () { // host vs IP address
 
 test(function () { // URI
 	Assert::false(IpAddress::isValid(''));
-	Assert::false(IpAddress::isValid(FALSE));
 	Assert::false(IpAddress::isValid('hello'));
 	Assert::false(IpAddress::isValid('inteve.cz'));
 	Assert::false(IpAddress::isValid('mailto: gandalf@example.org'));

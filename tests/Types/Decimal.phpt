@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Inteve\Types\InvalidArgumentException;
 use Inteve\Types\Decimal;
 use Tester\Assert;
@@ -100,10 +102,6 @@ test(function () {
 
 
 test(function () {
-	Assert::exception(function () {
-		new Decimal(100);
-	}, InvalidArgumentException::class, 'Value must be string, integer given.');
-
 	Assert::exception(function () {
 		new Decimal('hello');
 	}, InvalidArgumentException::class, 'Value must be numeric.');

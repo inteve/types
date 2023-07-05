@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use CzProject\Assert\AssertException;
 use Inteve\Types\HexColor;
 use Tester\Assert;
@@ -22,13 +24,6 @@ test(function () {
 test(function () {
 	$color = HexColor::fromCssColor('#0088FF');
 	Assert::same('#0088ff', $color->getCssValue());
-});
-
-
-test(function () {
-	Assert::exception(function () {
-		$color = new HexColor(10);
-	}, AssertException::class, 'Invalid value type - expected string, integer given.');
 });
 
 
