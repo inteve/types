@@ -1,10 +1,11 @@
-
 # Inteve\Types
 
-[![Tests Status](https://github.com/inteve/types/workflows/Tests/badge.svg)](https://github.com/inteve/types/actions)
+[![Build Status](https://github.com/inteve/types/workflows/Build/badge.svg)](https://github.com/inteve/types/actions)
+[![Downloads this Month](https://img.shields.io/packagist/dm/inteve/types.svg)](https://packagist.org/packages/inteve/types)
+[![Latest Stable Version](https://poser.pugx.org/inteve/types/v/stable)](https://github.com/inteve/types/releases)
+[![License](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://github.com/inteve/types/blob/master/license.md)
 
 Value objects and helpers for PHP.
-
 
 <a href="https://www.janpecha.cz/donate/"><img src="https://buymecoffee.intm.org/img/donate-banner.v1.svg" alt="Donate" height="100"></a>
 
