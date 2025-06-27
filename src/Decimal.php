@@ -55,7 +55,7 @@
 		}
 
 
-		public function plus(Decimal $b, int $decimals = NULL): self
+		public function plus(Decimal $b, ?int $decimals = NULL): self
 		{
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
@@ -65,7 +65,7 @@
 		}
 
 
-		public function minus(Decimal $b, int $decimals = NULL): self
+		public function minus(Decimal $b, ?int $decimals = NULL): self
 		{
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
@@ -75,7 +75,7 @@
 		}
 
 
-		public function multipleBy(Decimal $b, int $decimals = NULL): self
+		public function multipleBy(Decimal $b, ?int $decimals = NULL): self
 		{
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
@@ -85,7 +85,7 @@
 		}
 
 
-		public function divideBy(Decimal $b, int $decimals = NULL): self
+		public function divideBy(Decimal $b, ?int $decimals = NULL): self
 		{
 			if ($b->isZero()) {
 				throw new InvalidArgumentException('Division by zero.');
@@ -108,7 +108,7 @@
 		/**
 		 * @param  string|int|float $value
 		 */
-		public static function from($value, int $decimals = NULL): self
+		public static function from($value, ?int $decimals = NULL): self
 		{
 			if ($decimals !== NULL) {
 				if (is_string($value)) {
