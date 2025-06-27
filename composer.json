@@ -14,7 +14,7 @@
 	],
 	"require": {
 		"php": "8.0 - 8.4",
-		"czproject/assert": "^1.2",
+		"czproject/assert": "^2.0",
 		"nette/utils": "^3.0 || ^4.0"
 	},
 	"autoload": {

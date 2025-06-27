@@ -48,8 +48,6 @@
 		 */
 		public static function hash(string $password, $algo = PASSWORD_BCRYPT, array $options = []): self
 		{
-			Assert::string($password);
-
 			if ($password === '') {
 				throw new InvalidArgumentException('Password can not be empty.');
 			}

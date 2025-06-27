@@ -28,7 +28,6 @@
 
 		public function __construct(string $type)
 		{
-			Assert::string($type);
 			$type = ltrim($type, '\\');
 			Assert::true($type !== '', 'Type cannot be empty.');
 			$this->type = $type;
