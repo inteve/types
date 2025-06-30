@@ -4,7 +4,6 @@
 
 	namespace Inteve\Types;
 
-	use Nette\Utils\Strings;
 	use Nette\Utils\Validators;
 
 
@@ -154,7 +153,7 @@
 				$num2 = '0.' . str_repeat('0', $decimals) . '5';
 				assert(is_numeric($num2));
 
-				if (Strings::startsWith($newValue[0], '-')) { // negative
+				if (str_starts_with($newValue[0], '-')) { // negative
 					$newValue = bcsub($newValue, $num2, $decimals);
 
 				} else {
