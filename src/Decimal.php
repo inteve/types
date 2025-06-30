@@ -10,7 +10,7 @@
 
 	class Decimal
 	{
-		/** @var string */
+		/** @var numeric-string */
 		private $value;
 
 		/** @var int */
@@ -20,6 +20,9 @@
 		private $zero;
 
 
+		/**
+		 * @param numeric-string $value
+		 */
 		public function __construct(string $value)
 		{
 			if (!Validators::isNumeric($value)) {
@@ -33,6 +36,10 @@
 
 			} elseif ($value[0] === '.') {
 				$value = '0' . $value;
+			}
+
+			if (!is_numeric($value)) {
+				throw new InvalidArgumentException('Value is not valid numeric string.');
 			}
 
 			$this->value = $value;
@@ -60,7 +67,6 @@
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
 			$newValue = bcadd($this->value, $b->value, $decimals + 1);
-			assert($newValue !== NULL); // PHPStan fix
 			return new self(self::roundResult($newValue, $decimals, $hasDecimals));
 		}
 
@@ -70,7 +76,6 @@
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
 			$newValue = bcsub($this->value, $b->value, $decimals + 1);
-			assert($newValue !== NULL); // PHPStan fix
 			return new self(self::roundResult($newValue, $decimals, $hasDecimals));
 		}
 
@@ -80,7 +85,6 @@
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
 			$newValue = bcmul($this->value, $b->value, $decimals + 1);
-			assert($newValue !== NULL); // PHPStan fix
 			return new self(self::roundResult($newValue, $decimals, $hasDecimals));
 		}
 
@@ -94,7 +98,6 @@
 			$hasDecimals = $decimals !== NULL;
 			$decimals = $decimals !== NULL ? $decimals : max($this->decimals, $b->decimals);
 			$newValue = bcdiv($this->value, $b->value, $decimals + 1);
-			assert($newValue !== NULL); // PHPStan fix
 			return new self(self::roundResult($newValue, $decimals, $hasDecimals));
 		}
 
@@ -118,10 +121,20 @@
 				$value = number_format($value, $decimals, '.', '');
 			}
 
-			return new self((string) $value);
+			$value = (string) $value;
+
+			if (!is_numeric($value)) {
+				throw new InvalidArgumentException("Value is not numeric-string.");
+			}
+
+			return new self($value);
 		}
 
 
+		/**
+		 * @param  numeric-string $newValue
+		 * @return numeric-string
+		 */
 		private static function roundResult(string $newValue, int $decimals, bool $hasDecimals): string
 		{
 			$pos = strpos($newValue, '.');
@@ -138,15 +151,23 @@
 					throw new InvalidArgumentException('Too much decimal places - please specify decimals manually.');
 				}
 
+				$num2 = '0.' . str_repeat('0', $decimals) . '5';
+				assert(is_numeric($num2));
+
 				if (Strings::startsWith($newValue[0], '-')) { // negative
-					$newValue = bcsub($newValue, '0.' . str_repeat('0', $decimals) . '5', $decimals);
+					$newValue = bcsub($newValue, $num2, $decimals);
 
 				} else {
-					$newValue = bcadd($newValue, '0.' . str_repeat('0', $decimals) . '5', $decimals);
+					$newValue = bcadd($newValue, $num2, $decimals);
 				}
 
 			} else {
 				$newValue = rtrim(substr($newValue, 0, -1), '.');
+			}
+
+
+			if (!is_numeric($newValue)) {
+				throw new InvalidStateException("Rounded value is not numeric-string.");
 			}
 
 			return $newValue;
